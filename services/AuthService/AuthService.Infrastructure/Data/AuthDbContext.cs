@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using AuthService.Domain.Entities;
 
 public class AuthDbContext : DbContext
 {

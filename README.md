@@ -1,24 +1,33 @@
 # Smart Expense Platform (Microservices Architecture)
 
-## Tech Stack
+## Overview
 
-* .NET (Web API)
-* JWT Authentication
-* Entity Framework Core
-* Swagger
-* Docker (coming soon)
-* React (coming soon)
+A scalable full stack application built using .NET, following Clean Architecture principles with JWT-based authentication.
 
-## Features Implemented
+## Architecture
+
+* Domain Layer (Entities)
+* Application Layer (DTOs, Interfaces)
+* Infrastructure Layer (Database, Auth Logic)
+* API Layer (Endpoints)
+
+## Features
 
 * User Registration
-* User Login with JWT
+* JWT Authentication
 * Secure API endpoints
-* Swagger authentication support
+* Swagger integration with authorization
+
+## Tech Stack
+
+* .NET 9 Web API
+* Entity Framework Core
+* JWT Authentication
+* Swagger
 
 ## Next Steps
 
-* Clean architecture refactoring
 * Expense microservice
 * API Gateway
 * React frontend
+* Docker & CI/CD
