@@ -8,7 +8,6 @@ using System.Security.Claims;
 using System.Text;
 using AuthService.Application.DTOs;
 using AuthService.Application;
-using AuthService.Application.DTOs;
 using AuthService.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
