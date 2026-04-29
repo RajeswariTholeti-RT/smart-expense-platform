@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using ExpenseService.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 builder.Services.AddScoped<IExpenseService, ExpenseService.Infrastructure.Services.ExpenseService>();
 
+builder.Services.AddDbContext<ExpenseDbContext>(options =>
+    options.UseInMemoryDatabase("ExpenseDb"));
 // ======================
 // 🔧 JWT AUTHENTICATION
 // ======================

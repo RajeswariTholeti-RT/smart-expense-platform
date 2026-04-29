@@ -1,18 +1,25 @@
 using ExpenseService.Application;
 using ExpenseService.Application.DTOs;
 using ExpenseService.Domain.Entities;
+using ExpenseService.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace ExpenseService.Infrastructure.Services;
 public class ExpenseService : IExpenseService
 {   
-    private static List<Expense> _expenses = new();
-    
-    public Task<List<Expense>> GetAllAsync()
+    private readonly ExpenseDbContext _db;
+
+    public ExpenseService(ExpenseDbContext db)
     {
-        return Task.FromResult(_expenses);
+        _db = db;
+    }
+    
+    public async Task<List<Expense>> GetAllAsync()
+    {
+        return await _db.Expenses.ToListAsync();
     }
 
-    public Task<Expense> CreateAsync(ExpenseRequest request)
+    public async Task<Expense> CreateAsync(ExpenseRequest request)
     {
         var expense = new Expense
         {
@@ -21,8 +28,9 @@ public class ExpenseService : IExpenseService
             Amount = request.Amount
          };
 
-         _expenses.Add(expense);
+        _db.Expenses.Add(expense);
+        await _db.SaveChangesAsync();
 
-         return Task.FromResult(expense);
+        return expense;
     }
 }
